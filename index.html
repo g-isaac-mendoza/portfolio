@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gary Isaac A. Mendoza - Portfolio</title>
+    <style>
+        /* Global Custom Cursor */
+        * {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='24' shape-rendering='crispEdges'%3E%3Cpolygon points='0,0 0,16 4,12 7,19 10,18 7,11 13,11' fill='%23000000' /%3E%3Cpolygon points='1,2 1,14 4,11 7,17 8,16 5,10 11,10' fill='%23ff00ff' /%3E%3C/svg%3E"), auto !important;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Windows 98 Scrollbar */
+        ::-webkit-scrollbar { width: 16px; height: 16px; }
+        ::-webkit-scrollbar-track { background: #050505; border-left: 1px solid #330033; }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border-top: 2px solid #ffffff; border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000; border-bottom: 2px solid #000000;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #a0a0a0;
+            border-top: 2px solid #000000; border-left: 2px solid #000000;
+            border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
+        }
+        ::-webkit-scrollbar-button:single-button {
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff; border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000; border-bottom: 2px solid #000000;
+            display: block; height: 16px; width: 16px;
+        }
+        ::-webkit-scrollbar-button:single-button:active {
+            border-top: 2px solid #000000; border-left: 2px solid #000000;
+            border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
+        }
+        ::-webkit-scrollbar-button:single-button:vertical:decrement {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Cpolygon points='8,5 4,10 12,10' fill='black'/%3E%3C/svg%3E");
+            background-position: center; background-repeat: no-repeat;
+        }
+        ::-webkit-scrollbar-button:single-button:vertical:increment {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Cpolygon points='8,11 4,6 12,6' fill='black'/%3E%3C/svg%3E");
+            background-position: center; background-repeat: no-repeat;
+        }
+
+        /* Animated Gradient Background & Base Scaling */
+        body {
+            background: linear-gradient(270deg, #000000, #1a001a, #2b002b, #0a000a);
+            background-size: 800% 800%;
+            animation: emoGradient 25s ease infinite;
+            color: #e0e0e0;
+            font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 20px;
+        }
+
+        @keyframes emoGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Windows Base Styles */
+        .window {
+            background-color: #1a1a1a;
+            border-top: 2px solid #555; border-left: 2px solid #555;
+            border-right: 2px solid #000; border-bottom: 2px solid #000;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .portfolio-window { max-width: 90%; margin: 0 auto; }
+
+        /* Navigation Bar */
+        .nav-window {
+            position: sticky; top: 20px; z-index: 1000;
+            margin: 0 auto 20px auto; max-width: 90%;
+        }
+        .nav-section-label {
+            width: 100%; color: #888; font-size: 10px; text-transform: uppercase;
+            padding: 5px 5px 2px 5px; margin-top: 5px; border-bottom: 1px dashed #330033;
+            font-family: 'Tahoma', sans-serif; letter-spacing: 1px;
+        }
+        .nav-content { padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; background-color: #0d0d0d; align-items: center; }
+        .nav-content a {
+            color: #e0e0e0; text-decoration: none; padding: 6px 10px;
+            border: 1px solid #444; background-color: #1a1a1a;
+            font-family: 'Courier New', monospace; font-size: 14px;
+            transition: border-color 0.2s, color 0.2s; flex-grow: 1; text-align: center;
+        }
+        .nav-content a:hover, .nav-content a:focus { border-color: #ff00ff; color: #ff00ff; outline: none; }
+        .nav-content a.highlight-link {
+            border-color: #800080; background-color: #2b0000; color: #ff80ff; font-weight: bold; margin-top: 5px;
+        }
+        .nav-content a.highlight-link:hover, .nav-content a.highlight-link:focus {
+            border-color: #ff00ff; background-color: #4d004d; color: #ffffff;
+        }
+
+        @media (min-width: 1250px) {
+            .nav-window { position: fixed; top: 20px; left: 20px; width: 180px; margin: 0; }
+            .nav-content { flex-direction: column; }
+            .nav-content a { text-align: left; }
+            .portfolio-window { margin-left: 220px; max-width: calc(96% - 220px); }
+        }
+
+        /* Title Bar */
+        .title-bar {
+            background: linear-gradient(90deg, #800080, #330033);
+            color: white; padding: 3px 5px; font-weight: bold;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 12px; letter-spacing: 1px;
+        }
+        .title-bar-controls span {
+            display: inline-block; background: #c0c0c0; color: black;
+            border-top: 1px solid #fff; border-left: 1px solid #fff;
+            border-right: 1px solid #000; border-bottom: 1px solid #000;
+            width: 14px; height: 14px; text-align: center; line-height: 12px;
+            margin-left: 2px; font-family: monospace; cursor: pointer;
+        }
+        .title-bar-controls span:active {
+            border-top: 1px solid #000; border-left: 1px solid #000;
+            border-right: 1px solid #fff; border-bottom: 1px solid #fff;
+        }
+
+        /* Layout Structure */
+        main.content { padding: 15px; display: block; }
+
+        /* Unified Top Banner */
+        header.top-banner {
+            border: 1px solid #444; background-color: #0d0d0d;
+            padding: 20px; margin-bottom: 20px;
+            display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
+        }
+        header.top-banner .branding-col {
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            min-width: 150px;
+        }
+        header.top-banner .text-col { flex: 1; min-width: 300px; }
+        .profile-pic, .logo-pic {
+            width: 200px; height: 200px; border: 1px solid #330033;
+            overflow: hidden; background-color: transparent;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s ease; cursor: pointer;
+        }
+        .profile-pic:hover, .logo-pic:hover { transform: scale(1.03); }
+        .profile-pic img, .logo-pic img { width: 100%; height: 100%; object-fit: cover; }
+        .status { color: #aaa; font-style: italic; font-size: 14px; margin-top: 5px; text-align: center; }
+
+        @media (max-width: 850px) {
+            header.top-banner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: 
+                    "pic logo"
+                    "status status"
+                    "text text";
+                justify-items: center;
+                gap: 15px;
+            }
+            header.top-banner .branding-col { display: contents; }
+            
+            .profile-pic { grid-area: pic; justify-self: right; margin-right: 5px; width: 150px; height: 150px; }
+            .logo-pic { grid-area: logo; justify-self: left; margin-left: 5px; width: 150px; height: 150px; }
+            .status { grid-area: status; margin-bottom: 5px; }
+            
+            header.top-banner .text-col { grid-area: text; width: 100%; text-align: center; min-width: auto; }
+            header.top-banner .text-col h1 { text-align: center; }
+        }
+
+        /* Typography & Info Boxes */
+        h1, h2, h3, h4 { font-family: 'Courier New', Courier, monospace; color: #ff00ff; margin-top: 0; scroll-margin-top: 80px; }
+        h1 { font-size: 32px; border-bottom: 1px dashed #550055; padding-bottom: 5px; margin-bottom: 10px; }
+        h2 { font-size: 26px; border-bottom: 1px dashed #550055; padding-bottom: 5px; }
+        h3 { font-size: 22px; border-bottom: 1px dashed #550055; padding-bottom: 5px; }
+        h4 { color: #e63939; margin-bottom: 5px; font-size: 18px; }
+        p { line-height: 1.5; text-align: justify; }
+
+        @media (max-width: 850px) { p { text-align: center; } }
+
+        section.info-box {
+            border: 1px solid #444; background-color: #0a0a0a;
+            padding: 15px; margin-bottom: 20px; display: block;
+        }
+        .contact-info, .socials { font-family: 'Courier New', monospace; font-size: 16px; }
+        a { color: #ff00ff; text-decoration: none; display: inline-block; margin-bottom: 5px; transition: color 0.2s; }
+        a:hover, a:focus { color: #ffffff; text-decoration: underline; outline: none; }
+
+        .timeline { border-left: 2px solid #550055; padding-left: 15px; margin-left: 10px; }
+        .timeline-item { margin-bottom: 15px; position: relative; text-align: justify; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -21px; top: 6px;
+            width: 8px; height: 8px; background-color: #ff00ff; border: 1px solid #000;
+        }
+        .year { color: #ff00ff; font-weight: bold; font-family: 'Courier New', monospace; text-align: left; font-size: 18px; }
+        .strong-text { color: #ffffff; font-weight: bold; }
+
+        .quote-block {
+            text-align: center; font-style: italic; color: #ff00ff;
+            margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #330033;
+        }
+        .quote-author { display: block; font-size: 14px; color: #aaa; margin-top: 5px; font-style: normal; }
+
+        /* Grid System */
+        section.collage-container { margin-top: 20px; border: 1px dashed #330033; padding: 15px; background: #050505; }
+        .collage-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px; margin-top: 5px; margin-bottom: 15px; align-items: start;
+        }
+        .collage-grid.mini { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        
+        button.grid-item {
+            width: 100%; background-color: transparent; border: none; padding: 0;
+            display: flex; flex-direction: column; cursor: pointer;
+            text-decoration: none; transition: transform 0.2s ease; font-family: inherit;
+        }
+        button.grid-item:hover, button.grid-item:focus { transform: scale(1.03); outline: none; }
+        .img-content {
+            width: 100%; display: flex; align-items: center; justify-content: center;
+            background-color: transparent; color: #777; font-size: 10px; text-align: center; overflow: hidden;
+        }
+        .img-content img, .img-content video { width: 100%; height: auto; display: block; }
+        .pdf-placeholder {
+            width: 100%; padding: 30px 10px; border: 1px solid #444; background: #111;
+            color: #e0e0e0; display: flex;
+            align-items: center; justify-content: center; text-align: center; transition: border-color 0.2s, color 0.2s;
+        }
+        button.grid-item:hover .pdf-placeholder, button.grid-item:focus .pdf-placeholder { border-color: #ff00ff; color: #ff00ff; }
+        .caption { padding: 8px 0 0 0; font-size: 14px; color: #bbb; line-height: 1.4; text-align: justify; }
+        article.visual-item { background-color: #0f0f0f; border: 1px solid #222; padding: 10px; margin-bottom: 10px; display: block; }
+
+        /* Video Play Button Overlay */
+        .img-content:has(video) { position: relative; cursor: pointer; }
+        .img-content:has(video):after {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 0; height: 0; border-top: 15px solid transparent; border-bottom: 15px solid transparent;
+            /* --- CHANGED TO FUCHSIA --- */
+            border-left: 25px solid rgba(255, 0, 255, 0.7); /* Fuchsia with 70% opacity */
+            /* --- UPDATED SHADOW COLOR --- */
+            filter: drop-shadow(0 0 5px rgba(255, 102, 255, 0.5)); /* Lighter fuchsia/pink shadow */
+            /* -------------------------- */
+            z-index: 10; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        button.grid-item:hover .img-content:has(video):after, button.grid-item:focus .img-content:has(video):after {
+            /* --- CHANGED TO FUCHSIA (Full Opacity) --- */
+            border-left-color: rgba(255, 0, 255, 1); /* Full fuchsia */
+            /* --- UPDATED SHADOW COLOR --- */
+            filter: drop-shadow(0 0 8px rgba(255, 102, 255, 0.8)); /* Stronger fuchsia shadow */
+            /* -------------------------- */
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Modal Styles */
+        dialog#imageModal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0;
+            width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.85);
+            align-items: center; justify-content: center; border: none; padding: 0; margin: 0; max-width: none; max-height: none;
+        }
+        .modal-content-wrapper {
+            background-color: #1a1a1a; border-top: 2px solid #555; border-left: 2px solid #555;
+            border-right: 2px solid #000; border-bottom: 2px solid #000;
+            box-shadow: 2px 2px 15px rgba(255, 0, 255, 0.15); display: flex; flex-direction: column;
+            width: 90vw; max-width: 1200px; max-height: 90vh;
+        }
+        .modal-title-bar {
+            background: linear-gradient(90deg, #800080, #330033); padding: 3px 5px;
+            display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #000;
+        }
+        .modal-title-text {
+            color: white; font-family: 'Tahoma', sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 1px;
+        }
+        .modal-body {
+            padding: 5px; background-color: #0a0a0a; display: flex; align-items: center; justify-content: center;
+            overflow: hidden; height: calc(90vh - 30px); width: 100%; box-sizing: border-box;
+        }
+        #modalImage { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+        #modalIframe { width: 100%; height: 100%; border: none; display: none; background: white; }
+        #modalVideo { display: none; max-width: 100%; max-height: 100%; }
+
+        footer { clear: both; width: 100%; padding: 40px 0; text-align: center; color: #888; font-family: 'Courier New', monospace; font-size: 14px; }
+    </style>
+</head>
+
+<body>
+
+    <nav class="window nav-window" aria-label="Main Navigation">
+        <div class="title-bar">
+            <div class="title-text">System.Nav</div>
+            <div class="title-bar-controls"><span>_</span><span>X</span></div>
+        </div>
+        <div class="nav-content">
+            <div class="nav-section-label">Directory</div>
+            <a href="#about">> Profile & Details</a>
+            <a href="#experience">> Experience & Ed.</a>
+            <a href="#works">> Portfolio Gallery</a>
+            
+            <div class="nav-section-label">Actions</div>
+            <a href="#contact" class="highlight-link" aria-label="Go to contact information">> Contact / Resume</a>
+        </div>
+    </nav>
+
+    <div class="window portfolio-window">
+        <div class="title-bar">
+            <div class="title-text">Isaac Mendoza - Portfolio</div>
+            <div class="title-bar-controls"><span>_</span><span>&#9633;</span><span>X</span></div>
+        </div>
+
+        <main class="content">
+            
+            <header class="top-banner" id="about">
+                <div class="branding-col">
+                    <button class="profile-pic" aria-label="View Profile Picture Fullscreen">
+                        <img src="https://i.imgur.com/stPAgYM.jpeg" alt="Portrait of Isaac Mendoza">
+                    </button>
+                    <div class="status">
+                        Full-Stack Developer<br>
+                        Traditional & Digital Artist<br>
+                        Graphic Designer & Animator
+                    </div>
+                </div>
+                <div class="text-col">
+                    <h1>Gary Isaac A. Mendoza</h1>
+                    <p>Hello! My name is Isaac, and I am a dedicated <strong>full-stack developer</strong> with a foundation in C# and Node.js, backed by a versatile toolkit including HTML/CSS/JS, Python, Java, PHP, and C++. Since 2020, I have delivered a diverse range of solutions; from scalable web applications and custom Discord bots to standalone software and integrated Arduino hardware. I also have a multidisciplinary background in <strong>arts, design, and 2D animation</strong>, allowing me to oversee both the technical execution and visual integrity of a project from conception to deployment.</p>
+                    <p>I thrive in collaborative, open-forum environments where constructive feedback and integrity are the standard. Beyond my technical stack, I prioritize precise time management and the accurate execution of complex instructions to ensure every deliverable meets professional benchmarks. I am eager to apply this blend of creative design and rigorous engineering to your next challenge!</p>
+                </div>
+                <div class="branding-col">
+                    <button class="logo-pic" aria-label="View Graphic Design Logo Fullscreen">
+                        <img src="https://i.imgur.com/ajUghI7.jpeg" alt="Isaac's Graphic Design Logo">
+                    </button>
+                </div>
+            </header>
+
+            <section class="info-box">
+                <h3>My Life Philosophy</h3>
+                <blockquote class="quote-block">
+                    "Five seconds of fear, or a lifetime of regret. I chose the fear."
+                    <span class="quote-author">- Coby Cotton</span>
+                </blockquote>
+                <p>My approach is driven by this simple rule alone. In development, the biggest hurdle is usually the hesitation to try something that might fail. I use that "five seconds" to push through the discomfort of deploying complex code or learning a difficult new framework. I’m at my best in open, honest environments where feedback is direct and accountability is a given. I’d rather take the risk of a new idea than play it safe and miss an opportunity to build something better.</p>
+            </section>
+
+            <section class="info-box" id="experience">
+                <h3>Work Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">2021 - 2023</div>
+                        <span class="strong-text">Head of Design, TechHost LTD</span><br>
+                        Directed social media advertising and corporate branding initiatives for a VPS hosting provider.
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2021 - 2022</div>
+                        <span class="strong-text">Freelance Software Developer, Sketchful.io</span><br>
+                        Engineered a fully functional Pictionary recreation as a Discord bot. The application achieved official Discord verification and was deployed across approximately 350 servers.
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-box">
+                <h3>Academic Excellence</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">2020 - 2024</div>
+                        <strong>Junior High, consistent with High Honors</strong>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2024 - 2025</div>
+                        <strong>Grade 11, with Honors</strong>
+                        <br><br>Grade 11 - Class Officer - Auditor and Acting Public Informations Officer (PIO)
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2025 - 2026</div>
+                        <strong>Grade 12 (SEM 1), with High Honors</strong><br>
+                        <br>Grade 12 Class Officer - Public Informations Officer (PIO)<br>Erovoutika Robolympics x Regional Robolution 2025 (SUMOBOT v1), 1st Runner Up
+                    </div>
+                </div>
+            </section>
+            <section class="collage-container" id="works">
+                <h2>Primary Works & History</h2>
+
+                <article class="visual-item">
+                    <h3>Academic Competitions & Representations</h3>
+                    <p style="margin-bottom: 15px; color: #aaa;">Erovoutika Robolympics x Regional Robolution 2025 (Sumobot V1, 1st Runner Up)</p>
+                    <div class="collage-grid">
+                        <button class="grid-item" aria-label="View Robolympics Photo 1"><div class="img-content"><img src="https://i.imgur.com/8zJt8EO.png" alt="Robolympics 2025 Moment 1"></div></button>
+                        <button class="grid-item" aria-label="View Robolympics Photo 2"><div class="img-content"><img src="https://i.imgur.com/25XlpgA.png" alt="Robolympics 2025 Moment 2"></div></button>
+                        <button class="grid-item" aria-label="View Robolympics Photo 3"><div class="img-content"><img src="https://i.imgur.com/OoFOf9u.png" alt="Robolympics 2025 Moment 3"></div></button>
+                        <button class="grid-item" aria-label="View Robolympics Photo 4"><div class="img-content"><img src="https://i.imgur.com/vcDNXDC.png" alt="Robolympics 2025 Moment 4"></div></button>
+                        <button class="grid-item" aria-label="View Robolympics Photo 5"><div class="img-content"><img src="https://i.imgur.com/5qewo12.png" alt="Robolympics 2025 Moment 5"></div></button>
+                    </div>
+                </article>
+
+                <article class="visual-item">
+                    <h3>Notable Research Papers</h3>
+                    <p style="margin-bottom: 15px; color: #aaa;">Click to view the full PDF documents.</p>
+                    <div class="collage-grid mini">
+                        <button class="grid-item" data-pdf="APP5_Manuscript_25-KNU-001.pdf" aria-label="View Research Paper 1">
+                            <div class="img-content"><div class="pdf-placeholder">The Relationship between Artificial Intelligence Integration and its Acceptance among Elderly Residents in Talomo District, Davao City
+<br><br>This quantitative study examined the relationship between the level of artificial intelligence integration and its acceptance among elderly residents in Talomo District, Davao City, finding that while both integration and acceptance were moderate, acceptance was primarily driven by the participants' general quality of life rather than their current exposure to AI technology.</div></div>
+                        </button>
+                        <button class="grid-item" data-pdf="APP6T_12KNUTH_GROUP3_FEASIBILITY_STUDY.pdf" aria-label="View Research Paper 2">
+                            <div class="img-content"><div class="pdf-placeholder">Feasıbılıty Study ng Love Bus Libreng Sakay Mobile App na Nagmo-monitor ng Lokasyon at Espasyo
+<br><br>This feasibility study evaluates the development of "LOVE BUS Davao Tracker," a mobile application designed to provide real-time GPS location and seat availability updates for the Davao City free shuttle service to reduce passenger wait times and improve travel planning. (Note: The feasibility study is in Tagalog.)</div></div>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="visual-item">
+                    <h3>Programming: Discord Bots, Websites, Software, Arduino</h3>
+                    <div class="collage-grid">
+                        <button class="grid-item" aria-label="View Custom AI Chatbot Gif">
+                            <div class="img-content"><img src="https://i.imgur.com/DV5ax11.gif" alt="Bespoke AI Chatbot Demo"></div>
+                            <div class="caption">In 2020 to 2021, long before mainstream AI chatbots like ChatGPT, I engineered a bespoke AI chatbot using Node.js with my own custom-made language model.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Sketchful Discord Bot Photo">
+                            <div class="img-content"><img src="https://i.imgur.com/1BWPKBM.png" alt="Sketchful.io Discord Bot Stats"></div>
+                            <div class="caption">This Discord bot was the Sketchful.io pictionary Discord bot I had made for said web game. It featured various game modes, player stats, and a global leaderboard.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View 2048 Web Game Gif">
+                            <div class="img-content"><img src="https://i.imgur.com/33C3foq.gif" alt="Custom 2048 HTML Game Demo"></div>
+                            <div class="caption">I made a branded recreation of the puzzle game 2048 from scratch with HTML/CSS/JS, for a club booth game in our school's 2025 Club Fair event.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Arduino Simon Says Gif">
+                            <div class="img-content"><img src="https://i.imgur.com/CP9qjGz.gif" alt="Arduino Simon Says Simulation"></div>
+                            <div class="caption">Using an Arduino Uno and C++ code simulated through Tinkercad, I made a small project that recreates the Simon Says memorization game.</div>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="visual-item">
+                    <h3>Traditional & Digital Art</h3>
+                    <div class="collage-grid">
+                        <button class="grid-item" aria-label="View Art Piece 1"><div class="img-content"><img src="https://i.imgur.com/yuNqRHe.png" alt="Art Piece 1"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 2"><div class="img-content"><img src="https://i.imgur.com/53TbuM7.png" alt="Art Piece 2"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 3"><div class="img-content"><img src="https://i.imgur.com/KvX9Tj9.png" alt="Art Piece 3"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 4"><div class="img-content"><img src="https://i.imgur.com/hmf4yYH.png" alt="Art Piece 4"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 5"><div class="img-content"><img src="https://i.imgur.com/1VjKBFL.png" alt="Art Piece 5"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 6"><div class="img-content"><img src="https://i.imgur.com/U00VLbb.png" alt="Art Piece 6"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 7"><div class="img-content"><img src="https://i.imgur.com/VkyTpUX.png" alt="Art Piece 7"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 8"><div class="img-content"><img src="https://i.imgur.com/3L6Dfoq.png" alt="Art Piece 8"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 9"><div class="img-content"><img src="https://i.imgur.com/4sN5v4f.png" alt="Art Piece 9"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 10"><div class="img-content"><img src="https://i.imgur.com/vZmg1Q9.png" alt="Art Piece 10"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 11"><div class="img-content"><img src="https://i.imgur.com/bMU6ZsI.png" alt="Art Piece 11"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 12"><div class="img-content"><img src="https://i.imgur.com/6VT0RfM.png" alt="Art Piece 12"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 13"><div class="img-content"><img src="https://i.imgur.com/XmoBOu6.png" alt="Art Piece 13"></div></button>
+                        <button class="grid-item" aria-label="View Art Piece 14"><div class="img-content"><img src="https://i.imgur.com/r9CWvtR.png" alt="Art Piece 14"></div></button>
+                    </div>
+                </article>
+
+                <article class="visual-item">
+                    <h3>Graphic Design</h3>
+                    <div class="collage-grid">
+                        <button class="grid-item" aria-label="View TechHost Logo">
+                            <div class="img-content"><img src="https://i.imgur.com/Vv1rsoP.gif" alt="TechHost LTD Animated Logo"></div>
+                            <div class="caption">The new logo I made for TechHost LTD, which they've kept using until they went defunct.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Daily Quotes Logo">
+                            <div class="img-content"><img src="https://i.imgur.com/xLYkvay.png" alt="Daily Quotes Discord Bot Logo"></div>
+                            <div class="caption">Commissioned by a developer for the face of their Discord bot, Daily Quotes; a bot now used in over 13 thousand servers.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Eggactyl Logo">
+                            <div class="img-content"><img src="https://i.imgur.com/YmCfKkn.png" alt="Eggactyl Logo"></div>
+                            <div class="caption">A logo I had made for Eggactyl, a well-known tool for virtual private servers.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Cesium Labs Logo">
+                            <div class="img-content"><img src="https://i.imgur.com/frL6vQs.png" alt="Cesium Labs Logo"></div>
+                            <div class="caption">A logo I made for a now inactive developer community called Cesium Labs.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Dynox Promo">
+                            <div class="img-content"><img src="https://i.imgur.com/sV8T4AY.png" alt="Dynox Hosting Promo"></div>
+                            <div class="caption">I once was commissioned by Dynox Hosting LLC, a similar company to TechHost LTD where they do VPS hosting. I helped work on some branding and promotional material.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Shirt Commission">
+                            <div class="img-content"><img src="https://i.imgur.com/LnbOIii.png" alt="Shirt Commission"></div>
+                            <div class="caption">Another commission I had done for a shirt design.</div>
+                        </button>
+                        <button class="grid-item" aria-label="View Sketchful Graphic">
+                            <div class="img-content"><img src="https://i.imgur.com/7ZbhQ05.png" alt="Sketchful Graphic 1"></div>
+                            <div class="caption">During my time as a developer in Sketchful.io, I also worked on both frontend material and graphic design such as this work of mine.</div>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="visual-item">
+                    <h3>Animation</h3>
+                    <div class="collage-grid">
+                        <button class="grid-item" aria-label="View Animation 1">
+                            <div class="img-content"><video src="https://cdn.discordapp.com/attachments/1013459797087096975/1477337099429744834/FINAL_OUTPUT_1.mp4?ex=69a464e4&is=69a31364&hm=7ecb203e27956bdf8569ad4034af086e4f35948bc05339231144e1e2cc0a3ddf&" autoplay loop muted playsinline></video></div>
+                        </button>
+                        <button class="grid-item" aria-label="View Animation 2">
+                            <div class="img-content"><video src="https://media.discordapp.net/attachments/1013459797087096975/1477352168297201775/copy_2712CF6A-88DB-4CC8-8F3B-34D05A3E2A7F.mov?ex=69a472ec&amp;is=69a3216c&amp;hm=c96f061660cd59d8cb1f7762898e251925ea9b1ed7cd3cc9da7ca7737dd909f2&amp;" autoplay loop muted playsinline></video></div>
+                        </button>
+                        <button class="grid-item" aria-label="View Animation 3">
+                            <div class="img-content"><video src="https://media.discordapp.net/attachments/1013459797087096975/1477352167802405025/copy_4D27EDAD-1484-4914-8E92-4B23D17F77EF.mov?ex=69a472ec&amp;is=69a3216c&amp;hm=44e76330e7447b7194926542cb7d15c7fde4e14f4523f6f88ba487445d0e216b&amp;" autoplay loop muted playsinline></video></div>
+                        </button>
+                        <button class="grid-item" aria-label="View Animation 4">
+                            <div class="img-content"><video src="https://media.discordapp.net/attachments/1013459797087096975/1477352167131054342/Untitled20.mov?ex=69a472ec&amp;is=69a3216c&amp;hm=caa10596f69608a25d94763eefcfd654f7e14d60ecb78f5b3b3faa52e682082f&amp;" autoplay loop muted playsinline></video></div>
+                        </button>
+                        <button class="grid-item" aria-label="View Animation 5">
+                            <div class="img-content"><video src="https://media.discordapp.net/attachments/1013459797087096975/1477352167403814993/1000058436.mov?ex=69a472ec&amp;is=69a3216c&amp;hm=007244eb8d9bf818c6a01b53c5d8e4d1b927417fba71e08961492e064a88ffeb&amp;" autoplay loop muted playsinline></video></div>
+                        </button>
+                    </div>
+                </article>
+            </section>
+
+            <section class="collage-container" id="memories">
+                <h2>Memory Gallery</h2>
+                <p style="margin-bottom: 15px; color: #aaa;">A collection of my favorite people and my favorite life experiences. Without them, I would not have come as far as where I am right now. <3</p>
+                <div class="collage-grid">
+                    <button class="grid-item" aria-label="View Memory 1"><div class="img-content"><img src="https://i.imgur.com/ptIIn5O.png" alt="Memory Placeholder 1"></div></button>
+                    <button class="grid-item" aria-label="View Memory 2"><div class="img-content"><img src="https://i.imgur.com/nVhPqGZ.png" alt="Memory Placeholder 2"></div></button>
+                    <button class="grid-item" aria-label="View Memory 3"><div class="img-content"><img src="https://i.imgur.com/NzxLbmG.png" alt="Memory Placeholder 3"></div></button>
+                    <button class="grid-item" aria-label="View Memory 4"><div class="img-content"><img src="https://i.imgur.com/TEPGic8.png" alt="Memory Placeholder 4"></div></button>
+                    <button class="grid-item" aria-label="View Memory 5"><div class="img-content"><img src="https://i.imgur.com/DnlztO8.png" alt="Memory Placeholder 5"></div></button>
+                    <button class="grid-item" aria-label="View Memory 6"><div class="img-content"><img src="https://i.imgur.com/TCKx3Hj.png" alt="Memory Placeholder 6"></div></button>
+                </div>
+            </section>
+
+            <section class="info-box contact-info" id="contact" style="margin-top: 40px; text-align: center;">
+                <h3>Hey-hey! Get in contact with me!</h3>
+                <a href="mailto:giMendoza@mcm.edu.ph">giMendoza@mcm.edu.ph</a> | 
+                <a href="mailto:gary.isaac.mendoza@gmail.com">gary.isaac.mendoza@gmail.com</a><br>
+                Davao City, Philippines<br><br>
+                <a href="https://www.linkedin.com/in/isaac-mendoza-7729342b3/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
+                <a href="https://www.instagram.com/g.izzc" target="_blank" rel="noopener noreferrer">Instagram </a><br><br>
+                <em>* Resume is available upon request.</em>
+            </section>
+
+        </main>
+
+        <dialog id="imageModal" aria-label="Media Viewer">
+            <div class="modal-content-wrapper">
+                <div class="modal-title-bar">
+                    <div class="modal-title-text">Media Viewer</div>
+                    <div class="title-bar-controls">
+                        <span id="modalXBtn" role="button" tabindex="0" aria-label="Close Viewer">X</span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Full View Representation">
+                    <iframe id="modalIframe" src="" title="PDF Document Viewer"></iframe>
+                    <video id="modalVideo" controls style="display:none; width:100%; height:100%; object-fit:contain;"></video>
+                </div>
+            </div>
+        </dialog>
+
+        <script>
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalIframe = document.getElementById('modalIframe');
+            const modalVideo = document.getElementById('modalVideo');
+            const xBtn = document.getElementById('modalXBtn');
+
+            const clickableItems = document.querySelectorAll('.grid-item, .profile-pic, .logo-pic');
+
+            clickableItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    if (e.target.closest('a')) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    modalImg.style.display = 'none';
+                    modalIframe.style.display = 'none';
+                    modalVideo.style.display = 'none';
+                    modalVideo.pause();
+                    modalVideo.src = "";
+
+                    const pdfSource = this.getAttribute('data-pdf');
+                    
+                    if (pdfSource) {
+                        modalIframe.src = pdfSource;
+                        modalIframe.style.display = 'block';
+                        modal.style.display = 'flex';
+                        modal.showModal(); 
+                        return;
+                    }
+
+                    const imgContainer = (this.classList.contains('profile-pic') || this.classList.contains('logo-pic')) ? this : this.querySelector('.img-content');
+                    if (!imgContainer) return;
+
+                    const previewVideo = imgContainer.querySelector('video');
+                    const iframeSource = imgContainer.querySelector('iframe');
+                    const imgSource = imgContainer.querySelector('img');
+
+                    if (previewVideo) {
+                        previewVideo.pause();
+                        modalVideo.src = previewVideo.src;
+                        modalVideo.style.display = 'block';
+                        modalVideo.muted = false; 
+                        modalVideo.play().catch(err => console.log("Playback interaction required"));
+                    } else if (iframeSource) {
+                        modalIframe.src = iframeSource.src;
+                        modalIframe.style.display = 'block';
+                    } else if (imgSource && imgSource.src) {
+                        modalImg.src = imgSource.src;
+                        modalImg.style.display = 'block';
+                    } else {
+                        return;
+                    }
+                    modal.style.display = 'flex';
+                });
+            });
+
+            function closeModal() {
+                modal.style.display = 'none';
+                if (typeof modal.close === 'function') modal.close();
+                modalIframe.src = '';
+                modalVideo.pause();
+                modalVideo.src = "";
+
+                document.querySelectorAll('.img-content video').forEach(v => {
+                    if (v.hasAttribute('autoplay')) {
+                        v.play().catch(err => { });
+                    }
+                });
+            }
+
+            xBtn.addEventListener('click', closeModal);
+            xBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') closeModal(); });
+            
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape" && modal.style.display === 'flex') closeModal();
+            });
+        </script>
+        
+        <footer style="text-align: center;">&copy; 2026. Made with HTML/CSS/JS and <3. - Isaac</footer>
+    </div>
+</body>
+</html>
