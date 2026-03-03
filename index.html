@@ -123,6 +123,11 @@
         /* Layout Structure */
         main.content { padding: 15px; display: block; }
 
+        /* Prevents sticky nav from overlapping anchor targets */
+        header[id], section[id] {
+            scroll-margin-top: 160px; 
+        }
+
         /* Unified Top Banner */
         header.top-banner {
             border: 1px solid #444; background-color: #0d0d0d;
@@ -287,13 +292,11 @@
         </div>
         <div class="nav-content">
             <div class="nav-section-label">Directory</div>
-            <a href="#about">About</a>
-            <a href="#experience">Background</a>
-            <a href="#works">Gallery</a>
-            <a href="#hobbies">Hobbies</a>
-            
-            <div class="nav-section-label">Actions</div>
-            <a href="#contact" class="highlight-link" aria-label="Go to contact information">> Contact</a>
+            <a href="#about">> About Me</a>
+            <a href="#experience">> Academmic & Work Background</a>
+            <a href="#works">> Portfolio Gallery</a>
+            <a href="#hobbies">> My Personal Life</a>
+            <a href="#contact" class="highlight-link" aria-label="Go to contact information">> Contact Me</a>
         </div>
     </nav>
 
