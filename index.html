@@ -222,12 +222,33 @@
             background-color: transparent; color: #777; font-size: 10px; text-align: center; overflow: hidden;
         }
         .img-content img, .img-content video { width: 100%; height: auto; display: block; }
-        .pdf-placeholder {
-            width: 100%; padding: 30px 10px; border: 1px solid #444; background: #111;
-            color: #e0e0e0; display: flex;
-            align-items: center; justify-content: center; text-align: center; transition: border-color 0.2s, color 0.2s;
+        /* PDF Badge Overlay */
+        button[data-pdf] .img-content {
+            position: relative;
         }
-        button.grid-item:hover .pdf-placeholder, button.grid-item:focus .pdf-placeholder { border-color: #ff00ff; color: #ff00ff; }
+        
+        button[data-pdf] .img-content::after {
+            content: 'PDF';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 0, 255, 0.85); /* Fuchsia to match your theme */
+            color: #ffffff;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            border: 1px solid #000;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        button.grid-item:hover[data-pdf] .img-content::after, 
+        button.grid-item:focus[data-pdf] .img-content::after {
+            background-color: rgba(255, 0, 255, 1);
+            transform: scale(1.1);
+        }
         .caption { padding: 8px 0 0 0; font-size: 14px; color: #bbb; line-height: 1.4; text-align: justify; }
         article.visual-item { background-color: #0f0f0f; border: 1px solid #222; padding: 10px; margin-bottom: 10px; display: block; }
 
@@ -415,18 +436,32 @@
                 <article class="visual-item">
                     <h3>Notable Research Papers</h3>
                     <p style="margin-bottom: 15px; color: #aaa;">Click to view the full PDF documents.</p>
-                    <div class="collage-grid mini">
+                    <div class="collage-grid">
+                        
                         <button class="grid-item" data-pdf="https://ia600805.us.archive.org/17/items/app-5-manuscript-25-knu-001/APP5_Manuscript_25-KNU-001.pdf" aria-label="View Research Paper 1">
-                            <div class="img-content"><div class="pdf-placeholder"><b>The Relationship between Artificial Intelligence Integration and its Acceptance among Elderly Residents in Talomo District, Davao City</b>
-<br><br>This quantitative study examined the relationship between the level of artificial intelligence integration and its acceptance among elderly residents in Talomo District, Davao City, finding that while both integration and acceptance were moderate, acceptance was primarily driven by the participants' general quality of life rather than their current exposure to AI technology.</div></div>
+                            <div class="img-content">
+                                <img src="https://i.imgur.com/OPfRMJb.png" alt="AI Integration Research Paper Cover">
+                            </div>
+                            <div class="caption">
+                                <span class="strong-text">The Relationship between Artificial Intelligence Integration and its Acceptance among Elderly Residents in Talomo District, Davao City</span>
+                                <br><br>
+                                This quantitative study examined the relationship between the level of artificial intelligence integration and its acceptance among elderly residents in Talomo District, Davao City, finding that while both integration and acceptance were moderate, acceptance was primarily driven by the participants' general quality of life rather than their current exposure to AI technology.
+                            </div>
                         </button>
+                
                         <button class="grid-item" data-pdf="https://ia600805.us.archive.org/17/items/app-5-manuscript-25-knu-001/APP6T_12KNUTH_GROUP3_FEASIBILITY_STUDY.pdf" aria-label="View Research Paper 2">
-                            <div class="img-content"><div class="pdf-placeholder"><b>Feasıbılıty Study ng Love Bus Libreng Sakay Mobile App na Nagmo-monitor ng Lokasyon at Espasyo</b>
-<br><br>This feasibility study evaluates the development of "LOVE BUS Davao Tracker," a mobile application designed to provide real-time GPS location and seat availability updates for the Davao City free shuttle service to reduce passenger wait times and improve travel planning. (Note: The feasibility study is in Tagalog.)</div></div>
+                            <div class="img-content">
+                                <img src="https://i.imgur.com/OgNkmCr.png" alt="Love Bus Feasibility Study Cover">
+                            </div>
+                            <div class="caption">
+                                <span class="strong-text">Feasibility Study ng Love Bus Libreng Sakay Mobile App na Nagmo-monitor ng Lokasyon at Espasyo</span>
+                                <br><br>
+                                This feasibility study evaluates the development of "LOVE BUS Davao Tracker," a mobile application designed to provide real-time GPS location and seat availability updates for the Davao City free shuttle service to reduce passenger wait times and improve travel planning.<br><i>* (Note: The feasibility study is in Tagalog.)</i>
+                            </div>
                         </button>
+                
                     </div>
                 </article>
-
                 <article class="visual-item">
                     <h3>Programming: Discord Bots, Websites, Software, Arduino</h3>
                     <div class="collage-grid">
